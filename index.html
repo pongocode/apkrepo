@@ -11,18 +11,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* 모바일 세로 모드 대응을 위해 min-height로 변경 */
             margin: 0;
             background-color: #f9f9f9;
+            padding: 20px; /* 작은 화면에서 여백 확보 */
         }
         .download-card {
             text-align: center;
             background: white;
-            padding: 30px;
+            padding: 35px 30px;
             border-radius: 28px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-            width: 280px;
+            width: 100%;
+            max-width: 300px; /* 반응형을 위해 max-width 사용 */
         }
+        
+        /* 새로 추가된 QR 코드 스타일 */
+        .qr-code-container {
+            margin-bottom: 25px;
+        }
+        .qr-code {
+            display: block;
+            margin: 0 auto;
+            border-radius: 16px; /* 모서리 둥글게 */
+            width: 160px;
+            height: 160px;
+            /* QR코드 로딩 중 배경색 */
+            background-color: #f0f0f0;
+        }
+
         .btn-group {
             display: flex;
             flex-direction: column;
@@ -42,12 +59,12 @@
         .btn:active { transform: scale(0.96); }
         .btn span { margin-right: 10px; font-size: 1.4rem; }
 
-        /* Honey 버튼: 꿀색 */
+        /* Honey 버튼 */
         .btn-honey {
             background-color: #fbc02d;
             color: #000;
         }
-        /* P 버튼: 브라운 */
+        /* P 버튼 */
         .btn-p {
             background-color: #8d6e63;
             color: #fff;
@@ -57,13 +74,19 @@
 <body>
 
 <div class="download-card">
+    <div class="qr-code-container">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fpongocode.github.io%2Fapkrepo%2F" 
+             alt="Repo QR Code" 
+             class="qr-code">
+    </div>
+
     <div class="btn-group">
         <a href="https://github.com/pongocode/apkrepo/releases/download/v1.0/app-honey.apk" class="btn btn-honey">
-            <span>🍯</span> Honey
+            <span>🍯</span> Honey APK
         </a>
 
         <a href="https://github.com/pongocode/apkrepo/releases/download/v1.0/app-p.apk" class="btn btn-p">
-            <span>💩</span> P
+            <span>💩</span> P APK
         </a>
     </div>
 </div>
